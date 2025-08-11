@@ -20,7 +20,7 @@
 				<!-- Intro -->
 					<div id="intro">
 						<h1>Aaryan's Portfolio</h1>
-						<p>Coding projects in Web Development, C++, and Machine Learning <a href="https://www.linkedin.com/in/aaryanpatel2007/">@aaryanpatel2007</a></p>
+						<p>Coding projects in Machine Learning, Web Development, and C++<a href="https://www.linkedin.com/in/aaryanpatel2007/">@aaryanpatel2007</a></p>
 						<ul class="actions">
 							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
 						</ul>
@@ -50,17 +50,57 @@
 						<!-- Featured Post -->
 							<article class="post featured">
 								<header class="major">
-									<h2><a>Spam Detection ML Model</a></h2>
-									<p>I developed a spam detector project in Python using a pipeline approach consisting of custom transformers. The project begins with an EmailToWordCounterTransformer class, which preprocesses email text by stripping headers, converting to lowercase, replacing URLs and numbers, removing punctuation, and optionally applying stemming. This transformer demonstrates text preprocessing techniques crucial for natural language processing tasks. The next step utilizes WordCounterToVectorTransformer to convert word counts into feature vectors, limiting the vocabulary size to 10 most common words per email. This transformer prepares data for my logistic regression model by vectorizing text into sparse matrices, showcasing feature engineering skills. Together, these components form a robust pipeline for email spam detection, illustrating proficiency in data preprocessing, feature extraction, pipeline construction, and model selection.</p>
+									<h2><a>Deep Learning Framework From Scratch</a></h2>
+									<p>I developed a deep learning framework from scratch, first building a scalar-based autograd engine to understand the fundamental mechanics of backpropagation and computational graphs, inspired by Andrej Karpathy. I then scaled the project by creating a more efficient, tensor-based system that leveraged matrix calculus and optimized operations. This project, demonstrates my expertise in low-level AI implementation, including handling complex challenges like broadcasting and gradient reduction. By comparing the performance of both systems, I was able to show a dramatic speedup from scalar to tensor operations, solidifying my understanding of the core mathematical principles and architectural optimizations that power modern deep learning.</p>
 								</header>
-								<a href="https://github.com/SpreadsheetAaryan/Spam_Detector" class="image main"><img src="images/spam.jpeg" alt="" /></a>
+								<a href="https://github.com/SpreadsheetAaryan/dl_framework_from_scratch" class="image main"><img src="images/nn.jpg" alt="" /></a>
 								<ul class="actions special">
-									<li><a href="https://github.com/SpreadsheetAaryan/Spam_Detector" class="button large">View Project</a></li>
+									<li><a href="https://github.com/SpreadsheetAaryan/dl_framework_from_scratch" class="button large">View Project</a></li>
 								</ul>
 							</article>
 
 						<!-- Posts -->
 							<section class="posts">
+                                <article>
+									<header>
+										<h2><a>Paper Trading App</a></h2>
+									</header>
+									<a href="https://github.com/SpreadsheetAaryan/Paper-Trading" class="image fit"><img src="images/paper_trade.jpeg" alt="" /></a>
+									<p>I developed a web-based Paper Trading Application using Flask, which provides users with a comprehensive platform for managing a simulated stock portfolio. This project integrates real-time stock market data with a pre-trained LSTM model to generate AI-powered price predictions, allowing users to buy and sell stocks, track their portfolio performance, and view their transaction history.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/SpreadsheetAaryan/Paper-Trading" class="button">View Project</a></li>
+									</ul>
+								</article>
+                                <article>
+									<header>
+										<h2><a>Workout Tracker</a></h2>
+									</header>
+									<a href="https://github.com/SpreadsheetAaryan/Workout-Tracker" class="image fit"><img src="images/dumbell.jpeg" alt="" /></a>
+									<p>I developed a real-time Workout Tracker that uses OpenCV and a machine learning model to count repetitions for various exercises. Users can train the model by providing reference images of an exercise's contracted and extended positions, which enables the application to accurately track their reps live via a webcam. This project also features a custom SQL database to log workout history and a built-in timer, demonstrating my expertise in computer vision and Scikit-Learn.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/SpreadsheetAaryan/Workout-Tracker" class="button">View Project</a></li>
+									</ul>
+								</article>
+                                <article>
+									<header>
+										<h2><a>Tic Tac Toe AI</a></h2>
+									</header>
+									<a href="https://github.com/SpreadsheetAaryan/TicTacToe-AI/" class="image fit"><img src="images/ttt.jpg" alt="" /></a>
+									<p>I developed an unbeatable Tic-Tac-Toe game using Python, leveraging the Minimax algorithm and Pygame. This project showcases my expertise in AI development, algorithm design, and interactive game programming, delivering a seamless and challenging user experience.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/SpreadsheetAaryan/TicTacToe-AI/" class="button">View Project</a></li>
+									</ul>
+								</article>
+                                <article>
+									<header>
+										<h2><a>Spam Detection ML Model</a></h2>
+									</header>
+									<a href="https://github.com/SpreadsheetAaryan/Spam_Detector" class="image fit"><img src="images/spam.jpeg" alt="" /></a>
+									<p>I developed a spam detector in Python using a pipeline of custom transformers to preprocess email text and build a logistic regression model. This project demonstrates my skills in NLP, starting with a transformer for text cleaning and feature engineering, followed by the transformer to vectorize the data.</p>
+									<ul class="actions special">
+										<li><a href="https://github.com/SpreadsheetAaryan/Spam_Detector" class="button">View Project</a></li>
+									</ul>
+								</article>
 								<article>
 									<header>
 										<h2><a>Mastermind</a></h2>
@@ -69,16 +109,6 @@
 									<p>I developed a Mastermind game in C++, a classic code-breaking game where players attempt to guess a secret code within a limited number of attempts. This project showcases my skills in object-oriented programming, algorithm design, and user interface implementation in a terminal application.</p>
 									<ul class="actions special">
 										<li><a href="https://github.com/SpreadsheetAaryan/Mastermind" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a>Black Jack</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/Blackjack" class="image fit"><img src="images/blackjack.jpeg" alt="" /></a>
-									<p>I developed a Blackjack game in C++, a popular card game where players compete against the dealer to get a hand value closest to 21 without exceeding it. This project highlights my proficiency in C++ programming, and implementing game logic.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/Blackjack" class="button">View Project</a></li>
 									</ul>
 								</article>
 								<article>
@@ -99,16 +129,6 @@
 									<p>I developed a dynamic fitness website using React, enabling users to log and share their workout routines. This project showcases my expertise in front-end development, user authentication, and state management, delivering a seamless and engaging user experience.</p>
 									<ul class="actions special">
 										<li><a href="https://github.com/SpreadsheetAaryan/React-Fitness" class="button">View Project</a></li>
-									</ul>
-								</article>
-                                <article>
-									<header>
-										<h2><a>Tic Tac Toe AI</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/TicTacToe-AI/" class="image fit"><img src="images/ttt.jpg" alt="" /></a>
-									<p>I developed an unbeatable Tic-Tac-Toe game using Python, leveraging the Minimax algorithm and Pygame. This project showcases my expertise in AI development, algorithm design, and interactive game programming, delivering a seamless and challenging user experience.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/TicTacToe-AI/" class="button">View Project</a></li>
 									</ul>
 								</article>
 
