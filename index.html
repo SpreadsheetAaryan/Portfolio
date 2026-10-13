@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aaryan Patel</title>
   <meta name="description" content="Aaryan Patel, AI student at UC San Diego. LLM agents, computer vision, and the backends they run on.">
-  <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0f1318" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#0f1318">
   <meta property="og:title" content="Aaryan Patel">
   <meta property="og:description" content="AI student at UC San Diego building LLM agents, computer vision, and the backends they run on.">
   <meta property="og:type" content="website">
@@ -21,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
   <script>
-    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
   </script>
 </head>
 <body>
@@ -79,7 +78,7 @@
         <div class="grid-demo__board" id="gridworld" role="group" aria-label="Gridworld. Use arrow keys to move between cells and Enter to place the goal."></div>
         <figcaption id="grid-caption" class="grid-demo__caption">
           <span class="grid-demo__hint">Tap any open cell to move the goal.</span>
-          <span>Value iteration: each square learns how close it is to the goal, so darker means closer. The dot then follows the arrows.</span>
+          <span>Value iteration: each square learns how close it is to the goal, so a stronger blue means closer. The dot then follows the arrows.</span>
         </figcaption>
         <p class="sr-only" id="grid-status" aria-live="polite"></p>
       </figure>

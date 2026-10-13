@@ -4,26 +4,20 @@
 
   /* ---------- Theme ---------- */
   const themeBtn = document.getElementById('theme-toggle');
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
-  const currentTheme = () => root.dataset.theme || (systemDark.matches ? 'dark' : 'light');
-  const syncThemeLabel = () => {
+  const currentTheme = () => (root.dataset.theme === 'light' ? 'light' : 'dark');
+  const syncTheme = () => {
     const now = currentTheme();
-    const next = now === 'dark' ? 'light' : 'dark';
-    themeBtn.setAttribute('aria-label', `Switch to ${next} theme`);
-    if (root.dataset.theme) {
-      document.querySelectorAll('meta[name="theme-color"]').forEach((m) => {
-        m.setAttribute('content', now === 'dark' ? '#0f1318' : '#f4f6f8');
-      });
-    }
+    themeBtn.setAttribute('aria-label', `Switch to ${now === 'dark' ? 'light' : 'dark'} theme`);
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', now === 'dark' ? '#0f1318' : '#f4f6f8');
   };
   themeBtn.addEventListener('click', () => {
     const next = currentTheme() === 'dark' ? 'light' : 'dark';
-    root.dataset.theme = next;
+    if (next === 'light') root.dataset.theme = 'light';
+    else delete root.dataset.theme;
     try { localStorage.setItem('theme', next); } catch (e) {}
-    syncThemeLabel();
+    syncTheme();
   });
-  systemDark.addEventListener('change', syncThemeLabel);
-  syncThemeLabel();
+  syncTheme();
 
   /* ---------- Nav: scrolled state, mobile menu, scroll-spy ---------- */
   const nav = document.querySelector('.nav');
