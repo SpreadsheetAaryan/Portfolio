@@ -1,191 +1,437 @@
-<!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Aaryan's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aaryan Patel</title>
+  <meta name="description" content="Aaryan Patel, AI student at UC San Diego. LLM agents, computer vision, and the backends they run on.">
+  <meta name="theme-color" content="#f4f6f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1318" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Aaryan Patel">
+  <meta property="og:description" content="AI student at UC San Diego building LLM agents, computer vision, and the backends they run on.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spreadsheetaaryan.github.io/Portfolio/">
+  <meta property="og:image" content="https://spreadsheetaaryan.github.io/Portfolio/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+  <header class="nav" id="top">
+    <div class="nav__inner">
+      <a class="nav__name" href="#top" aria-label="Aaryan Patel, back to top">Aaryan Patel</a>
+      <div class="nav__actions">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch color theme">
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6Z"/></svg>
+        </button>
+        <a class="btn btn--small" href="assets/Aaryan_Patel_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <button class="icon-btn nav__menu" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open section menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        </button>
+      </div>
+      <nav class="nav__links" id="nav-links" aria-label="Sections">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Aaryan's Portfolio</h1>
-						<p>Projects in Machine Learning, Web Development, and C++<a href="https://www.linkedin.com/in/aaryanpatel2007/">@aaryanpatel2007</a></p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__text">
+        <h1 id="hero-title" class="hero__title reveal" style="--d:0">Aaryan Patel</h1>
+        <p class="hero__lede reveal" style="--d:1">AI student at UC San Diego building LLM agents, computer vision, and the backends they run on.</p>
+        <p class="hero__bio reveal" style="--d:2">I build the backend at Beernerd, a La Jolla startup, and lead engineering at Symmyo, a health startup in the Blackstone Launchpad accelerator. Most recently, my team took 2nd place at the Swans Applied AI Hackathon.</p>
+        <dl class="facts reveal" style="--d:3">
+          <div><dt>Studying</dt><dd>B.S. Artificial Intelligence, 4.0 GPA</dd></div>
+          <div><dt>Graduating</dt><dd>June 2029</dd></div>
+          <div><dt>Looking for</dt><dd>SWE and ML internships</dd></div>
+        </dl>
+        <div class="hero__cta reveal" style="--d:4">
+          <a class="btn" href="#projects">See projects</a>
+          <a class="btn btn--ghost" href="mailto:aap025@ucsd.edu">Email me</a>
+          <span class="hero__socials">
+            <a class="icon-link" href="https://github.com/SpreadsheetAaryan" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/aaryanpatel2007/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+            </a>
+          </span>
+        </div>
+      </div>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="#" class="logo">Projects</a>
-					</header>
+      <figure class="grid-demo reveal" style="--d:2" aria-labelledby="grid-caption">
+        <div class="grid-demo__board" id="gridworld" role="group" aria-label="Gridworld. Use arrow keys to move between cells and Enter to place the goal."></div>
+        <figcaption id="grid-caption" class="grid-demo__caption">
+          <span class="grid-demo__hint">Tap any open cell to move the goal.</span>
+          <span>Value iteration: each square learns how close it is to the goal, so darker means closer. The dot then follows the arrows.</span>
+        </figcaption>
+        <p class="sr-only" id="grid-status" aria-live="polite"></p>
+      </figure>
+    </section>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
-						</ul>
-                        <ul class="icons alt">
+    <!-- Projects -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="section__head">
+        <h2 id="projects-title">Projects</h2>
+        <p class="section__sub">The four I'd most like to talk about. Each one opens a short case study.</p>
+      </div>
 
-                            <li><a href="https://www.linkedin.com/in/aaryanpatel2007/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+      <ol class="featured">
+        <li class="feature" data-project="corro">
+          <div class="feature__art" aria-hidden="true">
+            <svg viewBox="0 0 320 200">
+              <rect class="a-panel" x="18" y="22" width="132" height="156" rx="6"/>
+              <path class="a-faint" d="M34 46h86M34 60h100M34 74h70M34 102h96M34 116h80M34 130h100M34 144h60"/>
+              <rect class="a-hl" x="30" y="95" width="104" height="14" rx="3"/>
+              <rect class="a-panel" x="182" y="60" width="122" height="80" rx="6"/>
+              <path class="a-faint" d="M196 82h88M196 96h70"/>
+              <rect class="a-chip" x="196" y="110" width="66" height="18" rx="9"/>
+              <text class="a-chip-t" x="229" y="123" text-anchor="middle">Supported</text>
+              <path class="a-link" d="M134 102 C 160 102, 160 92, 182 92"/>
+              <circle class="a-dot" cx="134" cy="102" r="3.5"/>
+              <circle class="a-dot" cx="182" cy="92" r="3.5"/>
+            </svg>
+          </div>
+          <div class="feature__body">
+            <p class="badge">2nd place, $1,500 · Swans Applied AI Hackathon</p>
+            <h3 class="feature__title">Corro</h3>
+            <p class="feature__line">Turns a personal-injury case file into a source-checked dashboard. Every claim links back to the page it came from, and a fact-checker grades draft letters against the file.</p>
+            <ul class="feature__points">
+              <li>2,953 statements extracted from a 361-page, 31-document matter</li>
+              <li>92–94% correct on about 200 draft sentences, at about $0.0004 per check</li>
+            </ul>
+            <ul class="tags" aria-label="Built with"><li>Python</li><li>FastAPI</li><li>SQLite</li><li>OpenAI API</li></ul>
+            <div class="feature__actions">
+              <button class="btn btn--small" type="button" data-open="corro" aria-label="Read case study: Corro">Read case study</button>
+              <a class="text-link" href="https://github.com/WaitHoldMyBeer/corro" target="_blank" rel="noopener" aria-label="Corro code on GitHub">Code</a>
+            </div>
+          </div>
+        </li>
 
-                            <li><a href="https://github.com/SpreadsheetAaryan" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-                        </ul>
-					</nav>
+        <li class="feature" data-project="assistant">
+          <div class="feature__art" aria-hidden="true">
+            <svg viewBox="0 0 320 200">
+              <rect class="a-panel" x="20" y="76" width="70" height="48" rx="6"/>
+              <text class="a-label" x="55" y="104" text-anchor="middle">Request</text>
+              <circle class="a-core" cx="160" cy="100" r="26"/>
+              <text class="a-core-t" x="160" y="104" text-anchor="middle">Router</text>
+              <path class="a-link" d="M90 100h44"/>
+              <path class="a-link" d="M184 88 L232 42M186 96 L232 82M186 104 L232 118M184 112 L232 158"/>
+              <rect class="a-panel" x="232" y="28" width="72" height="28" rx="14"/><text class="a-label" x="268" y="46" text-anchor="middle">Intent</text>
+              <rect class="a-panel" x="232" y="68" width="72" height="28" rx="14"/><text class="a-label" x="268" y="86" text-anchor="middle">Planner</text>
+              <rect class="a-panel" x="232" y="104" width="72" height="28" rx="14"/><text class="a-label" x="268" y="122" text-anchor="middle">Memory</text>
+              <rect class="a-panel" x="232" y="144" width="72" height="28" rx="14"/><text class="a-label" x="268" y="162" text-anchor="middle">Research</text>
+            </svg>
+          </div>
+          <div class="feature__body">
+            <p class="badge">Self-hosted on a Raspberry Pi 2</p>
+            <h3 class="feature__title">Multi-agent AI assistant</h3>
+            <p class="feature__line">A personal assistant with its own agent engine, reachable from the web, Telegram, and a macOS companion. It runs in Docker on a Pi with 1 GB of RAM.</p>
+            <ul class="feature__points">
+              <li>Agent engine written from scratch, no LangChain, with 63 tools</li>
+              <li>Custom SQLite vector store, because ChromaDB has no 32-bit ARM build</li>
+            </ul>
+            <ul class="tags" aria-label="Built with"><li>Python</li><li>FastAPI</li><li>Next.js</li><li>Docker</li><li>Gemini</li></ul>
+            <div class="feature__actions">
+              <button class="btn btn--small" type="button" data-open="assistant" aria-label="Read case study: the AI assistant">Read case study</button>
+              <span class="muted-note">Code available on request</span>
+            </div>
+          </div>
+        </li>
 
-				<!-- Main -->
-					<div id="main">
+        <li class="feature" data-project="drone">
+          <div class="feature__art" aria-hidden="true">
+            <svg viewBox="0 0 320 200">
+              <rect class="a-field" x="16" y="16" width="288" height="168" rx="8"/>
+              <rect class="a-zone" x="226" y="118" width="62" height="50" rx="4"/>
+              <text class="a-label" x="257" y="147" text-anchor="middle">Drop zone</text>
+              <rect class="a-bag" x="52" y="44" width="14" height="10" rx="2"/>
+              <rect class="a-bag" x="96" y="132" width="14" height="10" rx="2"/>
+              <rect class="a-bag" x="150" y="62" width="14" height="10" rx="2"/>
+              <rect class="a-box" x="144" y="56" width="26" height="22" rx="2"/>
+              <path class="a-path" d="M40 160 C 70 120, 120 80, 157 67 S 230 110, 250 140"/>
+              <g transform="translate(157 67)"><circle class="a-rotor" cx="-9" cy="-9" r="5"/><circle class="a-rotor" cx="9" cy="-9" r="5"/><circle class="a-rotor" cx="-9" cy="9" r="5"/><circle class="a-rotor" cx="9" cy="9" r="5"/></g>
+            </svg>
+          </div>
+          <div class="feature__body">
+            <p class="badge">Vertical Flight Society</p>
+            <h3 class="feature__title">Autonomous ROS2 drone</h3>
+            <p class="feature__line">A drone that finds colored sandbags with onboard vision and flies them to a drop zone on its own.</p>
+            <ul class="feature__points">
+              <li>Real-time detection in ROS2 with OpenCV and YOLOv8, 90%+ accuracy</li>
+              <li>State machine that keeps vision in sync with PX4 flight control, 5 sandbags per run</li>
+            </ul>
+            <ul class="tags" aria-label="Built with"><li>ROS2</li><li>C++</li><li>OpenCV</li><li>YOLOv8</li><li>PX4</li></ul>
+            <div class="feature__actions">
+              <button class="btn btn--small" type="button" data-open="drone" aria-label="Read case study: the drone">Read case study</button>
+            </div>
+          </div>
+        </li>
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2><a>Deep Learning Framework From Scratch</a></h2>
-									<p>I developed a deep learning framework from scratch, first building a scalar-based autograd engine to understand the fundamental mechanics of backpropagation and computational graphs, inspired by Andrej Karpathy. I then scaled the project by creating a more efficient, tensor-based system that leveraged matrix calculus and optimized operations. This project, demonstrates my expertise in low-level AI implementation, including handling complex challenges like broadcasting and gradient reduction. By comparing the performance of both systems, I was able to show a dramatic speedup from scalar to tensor operations, solidifying my understanding of the core mathematical principles and architectural optimizations that power modern deep learning.</p>
-								</header>
-								<a href="https://github.com/SpreadsheetAaryan/dl_framework_from_scratch" class="image main"><img src="images/nn.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="https://github.com/SpreadsheetAaryan/dl_framework_from_scratch" class="button large">View Project</a></li>
-								</ul>
-							</article>
+        <li class="feature" data-project="dlf">
+          <div class="feature__art" aria-hidden="true">
+            <svg viewBox="0 0 320 200">
+              <path class="a-link" d="M66 56 L142 96M66 144 L142 104M166 100 L230 100M254 100 L290 100"/>
+              <path class="a-grad" d="M282 112 L250 112M222 112 L170 112M140 116 L74 154M140 84 L74 46"/>
+              <circle class="a-node" cx="54" cy="50" r="18"/><text class="a-label" x="54" y="54" text-anchor="middle">W</text>
+              <circle class="a-node" cx="54" cy="150" r="18"/><text class="a-label" x="54" y="154" text-anchor="middle">x</text>
+              <circle class="a-core" cx="154" cy="100" r="20"/><text class="a-core-t" x="154" y="104" text-anchor="middle">@</text>
+              <circle class="a-node" cx="242" cy="100" r="18"/><text class="a-label" x="242" y="104" text-anchor="middle">relu</text>
+              <text class="a-grad-t" x="196" y="134" text-anchor="middle">∂L/∂W</text>
+            </svg>
+          </div>
+          <div class="feature__body">
+            <p class="badge">From scratch, NumPy only</p>
+            <h3 class="feature__title">Deep learning framework</h3>
+            <p class="feature__line">A small PyTorch-style framework. I wrote scalar autograd first, then rebuilt it as a tensor engine with broadcasting-aware backprop.</p>
+            <ul class="feature__points">
+              <li>The tensor engine trains 1,381× faster per epoch than the scalar version</li>
+              <li>Reverse-mode autodiff with gradients for matmul, reductions, and broadcasting</li>
+            </ul>
+            <ul class="tags" aria-label="Built with"><li>Python</li><li>NumPy</li><li>Autograd</li></ul>
+            <div class="feature__actions">
+              <button class="btn btn--small" type="button" data-open="dlf" aria-label="Read case study: the deep learning framework">Read case study</button>
+              <a class="text-link" href="https://github.com/SpreadsheetAaryan/dl_framework_from_scratch" target="_blank" rel="noopener" aria-label="Deep learning framework code on GitHub">Code</a>
+            </div>
+          </div>
+        </li>
+      </ol>
 
-						<!-- Posts -->
-							<section class="posts">
-                                <article>
-									<header>
-										<h2><a>Emotion Detection Research Paper</a></h2>
-									</header>
-									<a href="https://docs.google.com/document/d/1Ue7KMaQ2NpgEBQhqdfCiVR7Mqlyu3w5cA1k8LPWFROs/edit?usp=sharing" class="image fit"><img src="images/edetect.jpg" alt="" /></a>
-									<p>I developed a Facial Emotion Detection model, creating custom CNN architectures and a focal loss function to detect customer emotions in real-time. This project achieved 92.05% accuracy on a color model and 83.11% accuracy on a grayscale model. I performed an emotional trend analysis that validated the model's reliability and identified a significant correlation between higher-rated content and a measurable decrease in sadness, providing actionable insights for enhancing customer experience.</p>
-									<ul class="actions special">
-										<li><a href="https://docs.google.com/document/d/1Ue7KMaQ2NpgEBQhqdfCiVR7Mqlyu3w5cA1k8LPWFROs/edit?usp=sharing" class="button">View Project</a></li>
-									</ul>
-								</article>
-                                <article>
-									<header>
-										<h2><a>Telegram Stock Assistant Agent</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/stock-agent" class="image fit"><img src="images/stockagent.png" alt="" /></a>
-									<p>I developed an AI-powered Stock Assistant Agent, creating a modular workflow orchestrated by n8n and a natural language interface powered by the Google Gemini API. This project can perform real-time financial analysis, generate customized news summaries, and create visual stock charts based on natural language queries.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/stock-agent" class="button">View Project</a></li>
-									</ul>
-								</article>
-                                <article>
-									<header>
-										<h2><a>Paper Trading App</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/Paper-Trading" class="image fit"><img src="images/paper_trade.jpeg" alt="" /></a>
-									<p>I developed a web-based Paper Trading Application using Flask, which provides users with a comprehensive platform for managing a simulated stock portfolio. This project integrates real-time stock market data with a pre-trained LSTM model to generate AI-powered price predictions, allowing users to buy and sell stocks, track their portfolio performance, and view their transaction history.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/Paper-Trading" class="button">View Project</a></li>
-									</ul>
-								</article>
-                                <article>
-									<header>
-										<h2><a>Workout Tracker</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/Workout-Tracker" class="image fit"><img src="images/dumbell.jpeg" alt="" /></a>
-									<p>I developed a real-time Workout Tracker that uses OpenCV and a machine learning model to count repetitions for various exercises. Users can train the model by providing reference images of an exercise's contracted and extended positions, which enables the application to accurately track their reps live via a webcam. This project also features a custom SQL database to log workout history and a built-in timer, demonstrating my expertise in computer vision and Scikit-Learn.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/Workout-Tracker" class="button">View Project</a></li>
-									</ul>
-								</article>
-                                <article>
-									<header>
-										<h2><a>Tic Tac Toe AI</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/TicTacToe-AI/" class="image fit"><img src="images/ttt.jpg" alt="" /></a>
-									<p>I developed an unbeatable Tic-Tac-Toe game using Python, leveraging the Minimax algorithm and Pygame. This project showcases my expertise in AI development, algorithm design, and interactive game programming, delivering a seamless and challenging user experience.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/TicTacToe-AI/" class="button">View Project</a></li>
-									</ul>
-								</article>
-                                <article>
-									<header>
-										<h2><a>Spam Detection ML Model</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/Spam_Detector" class="image fit"><img src="images/spam.jpeg" alt="" /></a>
-									<p>I developed a spam detector in Python using a pipeline of custom transformers to preprocess email text and build a logistic regression model. This project demonstrates my skills in NLP, starting with a transformer for text cleaning and feature engineering, followed by the transformer to vectorize the data.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/Spam_Detector" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a>Mastermind</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/Mastermind" class="image fit"><img src="images/mastermind.jpeg" alt="" /></a>
-									<p>I developed a Mastermind game in C++, a classic code-breaking game where players attempt to guess a secret code within a limited number of attempts. This project showcases my skills in object-oriented programming, algorithm design, and user interface implementation in a terminal application.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/Mastermind" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a>React Blog</a></h2>
-									</header>
-									<a href="https://github.com/SpreadsheetAaryan/React-Blog" class="image fit"><img src="images/blog.png" alt="" /></a>
-									<p>I developed a fully functional blog website using React, a modern JavaScript library for building user interfaces. This project demonstrates my skills in front-end development, responsive design, and state management, providing a seamless experience for both content creators and readers.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/SpreadsheetAaryan/React-Blog" class="button">View Project</a></li>
-									</ul>
-								</article>
+      <h3 class="subhead">More work</h3>
+      <ul class="more">
+        <li class="more__row">
+          <div class="more__main">
+            <h4>Hotel OS</h4>
+            <p>Housekeeping routing for hotels. A manager uploads the morning room report and gets balanced, floor-aware cleaning routes that re-plan when a room or staff status changes. Deterministic, no LLM calls.</p>
+          </div>
+          <ul class="tags"><li>FastAPI</li><li>React</li><li>TypeScript</li></ul>
+          <span class="more__link muted-note">Private</span>
+        </li>
+        <li class="more__row">
+          <div class="more__main">
+            <h4>CRED website revamp</h4>
+            <p>Backend lead on a 4-person Triton Software Engineering team rebuilding the site, intake form, and admin portal for a San Diego nonprofit that helps formerly incarcerated people.</p>
+          </div>
+          <ul class="tags"><li>Express</li><li>MongoDB</li><li>Next.js</li></ul>
+          <span class="more__link"><a class="text-link" href="https://cred-sd.vercel.app" target="_blank" rel="noopener">Live site</a> <a class="text-link" href="https://github.com/TritonSE/CRED" target="_blank" rel="noopener" aria-label="CRED code on GitHub">Code</a></span>
+        </li>
+        <li class="more__row">
+          <div class="more__main">
+            <h4>Bandits and dynamic programming</h4>
+            <p>Sutton &amp; Barto chapters 2 to 4 in NumPy: epsilon-greedy, UCB, gradient bandits, policy and value iteration, with interactive charts. A guided implementation on Deep-ML.</p>
+          </div>
+          <ul class="tags"><li>Python</li><li>NumPy</li><li>RL</li></ul>
+          <span class="more__link"><a class="text-link" href="https://spreadsheetaaryan.github.io/sutton-and-barto-from-scratch-1-bandits-and-dynamic-programming/" target="_blank" rel="noopener">Live charts</a> <a class="text-link" href="https://github.com/SpreadsheetAaryan/sutton-and-barto-from-scratch-1-bandits-and-dynamic-programming" target="_blank" rel="noopener" aria-label="Bandits and DP code on GitHub">Code</a></span>
+        </li>
+      </ul>
+      <p class="more__foot">Older experiments are on <a class="text-link" href="https://github.com/SpreadsheetAaryan" target="_blank" rel="noopener">GitHub</a>.</p>
+    </section>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>1835 Feather River Blvd<br />
-								Oroville, CA 95965</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a>(530) 552-2388</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a>apatel082407@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
+    <!-- Experience -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="section__head">
+        <h2 id="experience-title">Experience</h2>
+      </div>
+      <ol class="jobs">
+        <li class="job">
+          <p class="job__when">Jan 2026 – Present</p>
+          <div>
+            <h3 class="job__role">Software Developer, <span>Beernerd</span></h3>
+            <p class="job__where">La Jolla, CA</p>
+            <ul>
+              <li>Run the backend on AWS EC2 with Nginx and Route 53: a Fastify REST API at 99%+ uptime, backed by Supabase and Gemini.</li>
+              <li>Led a migration to a polymorphic SQL schema so the app could grow from one game to many activity types.</li>
+              <li>Labeled gameplay footage and fine-tuned YOLOv8 for real-time detection, the groundwork for automated scoring.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job">
+          <p class="job__when">Oct 2025 – Present</p>
+          <div>
+            <h3 class="job__role">CTO, <span>Symmyo</span></h3>
+            <p class="job__where">Blackstone Launchpad accelerator, $1,000 in funding</p>
+            <ul>
+              <li>Built a real-time EMG prototype in under 24 hours that won 1st place in a hackathon healthcare track.</li>
+              <li>Wrote the filtering pipeline (bandpass, rectification, low-pass) that cut signal noise by 80%.</li>
+              <li>Trained a Random Forest on SEMG DB1 with leave-one-subject-out validation to test on unseen users.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="job">
+          <p class="job__when">Jun – Nov 2024</p>
+          <div>
+            <h3 class="job__role">Computer vision research, <span>Inspirit AI</span></h3>
+            <p class="job__where">Remote research program</p>
+            <ul>
+              <li>Built CNNs and a focal-loss model for facial emotion detection: 92.05% on color images, 83.11% on grayscale. <a class="text-link" href="#research">See the paper</a></li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+      <p class="involve"><span>Also involved in</span> Triton Software Engineering, Vertical Flight Society, Triton Droids (ML), Triton Robotics</p>
+    </section>
 
-									<li><a href="https://www.linkedin.com/in/aaryanpatel2007/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+    <!-- Research -->
+    <section class="section" id="research" aria-labelledby="research-title">
+      <div class="section__head">
+        <h2 id="research-title">Research</h2>
+      </div>
+      <article class="paper">
+        <div class="paper__figure" aria-hidden="true">
+          <div class="bars">
+            <div class="bar" style="--v:71"><span>71%</span><em>Custom CNN</em></div>
+            <div class="bar" style="--v:76"><span>76%</span><em>ResNet50V2</em></div>
+            <div class="bar bar--hi" style="--v:92.05"><span>92.05%</span><em>Focal loss</em></div>
+          </div>
+          <p class="paper__figcap">Color model test accuracy, by iteration</p>
+        </div>
+        <div class="paper__text">
+          <h3>Emotion Detection for Customer Feedback</h3>
+          <p class="paper__cite">Aaryan Patel and Ivan Rodriguez (Brown University). Student research paper, Inspirit AI, 2024.</p>
+          <p>Surveys miss how people feel in the moment, so we trained models to read facial emotion as a feedback signal. A focal-loss model reached 92.05% test accuracy on 5-class color images, up from 76% with ResNet50V2 transfer learning, and a 4-block CNN reached 83.11% on FER+ grayscale. Run on movie clips across star ratings, detected sadness fell from 20% to 12% as ratings rose.</p>
+          <p class="muted-note">Full paper available on request.</p>
+        </div>
+      </article>
+    </section>
 
-									<li><a href="https://github.com/SpreadsheetAaryan" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+    <!-- Skills -->
+    <section class="section section--tight" id="skills" aria-labelledby="skills-title">
+      <div class="section__head">
+        <h2 id="skills-title">Tools I use</h2>
+      </div>
+      <dl class="skills">
+        <div><dt>Languages</dt><dd>Python, TypeScript, JavaScript, C++, C, Java, SQL</dd></div>
+        <div><dt>ML</dt><dd>PyTorch, TensorFlow, scikit-learn, OpenCV, YOLOv8, NumPy, LLM APIs, RAG</dd></div>
+        <div><dt>Backend</dt><dd>FastAPI, Fastify, Express, Flask, Next.js, React, MongoDB, Supabase, SQLite</dd></div>
+        <div><dt>Infra and robotics</dt><dd>Docker, Linux, AWS EC2, Nginx, Raspberry Pi, ROS2, PX4</dd></div>
+      </dl>
+    </section>
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+    <!-- Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Let's talk</h2>
+      <p>I'm looking for SWE and ML internships. The fastest way to reach me is email.</p>
+      <a class="contact__email" href="mailto:aap025@ucsd.edu">aap025@ucsd.edu</a>
+      <ul class="contact__links">
+        <li><a class="text-link" href="https://www.linkedin.com/in/aaryanpatel2007/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a class="text-link" href="https://github.com/SpreadsheetAaryan" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a class="text-link" href="assets/Aaryan_Patel_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
+      </ul>
+    </section>
+  </main>
 
-			</div>
+  <footer class="foot">
+    <p>Aaryan Patel, San Diego. Built by hand, hosted on GitHub Pages.</p>
+  </footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  <!-- Case studies -->
+  <dialog class="study" id="study" aria-labelledby="study-title">
+    <div class="study__bar">
+      <p class="study__kicker" id="study-kicker"></p>
+      <button class="icon-btn" type="button" id="study-close" aria-label="Close case study">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="study__body" id="study-body"></div>
+  </dialog>
 
-	</body>
+  <template id="tpl-corro">
+    <h2 id="study-title">Corro</h2>
+    <p class="study__lede">A personal-injury case file, checked against itself. Built in a weekend with one teammate; I was lead developer.</p>
+    <h3>The problem</h3>
+    <p>A personal-injury file runs to hundreds of pages across dozens of documents. When a firm writes to an insurer or a provider, every number and date has to match the file. One wrong figure in a demand letter costs credibility.</p>
+    <h3>What we built</h3>
+    <p>Corro reads a matter from Clio, extracts every statement into a knowledge graph with the page it came from, and shows the firm the case value and reachable coverage. A fact-checker grades each sentence of a draft as supported, contradicted, out of date, not in the file, or don't send.</p>
+    <h3>Decisions that mattered</h3>
+    <ul>
+      <li><strong>Read-only by construction.</strong> The Clio client only allows GET. Any other request raises before it leaves the machine, and a test asserts it.</li>
+      <li><strong>Quotes are checked in code.</strong> Every quote the model extracts is matched word-for-word against the source page before it's shown. The model's output isn't trusted on its own.</li>
+      <li><strong>Code first, model second.</strong> A deterministic tier answers in about a millisecond and handled 26 of 30 synthetic cases alone. The LLM only sees what code can't settle.</li>
+    </ul>
+    <h3>Results</h3>
+    <div class="stats">
+      <div><strong>2,953</strong><span>statements from a 361-page, 31-document matter</span></div>
+      <div><strong>92–94%</strong><span>correct on about 200 sentences built from the real file</span></div>
+      <div><strong>38–40 of 40</strong><span>changed dollar amounts caught</span></div>
+      <div><strong>$0.0004</strong><span>per check, median 1.5 seconds</span></div>
+    </div>
+    <p class="muted-note">Measured on one real case file, so treat these as best-case numbers.</p>
+    <p class="study__links"><a class="btn btn--small" href="https://github.com/WaitHoldMyBeer/corro" target="_blank" rel="noopener">View code on GitHub</a></p>
+  </template>
 
+  <template id="tpl-assistant">
+    <h2 id="study-title">Multi-agent AI assistant</h2>
+    <p class="study__lede">An assistant I own end to end, running on a Raspberry Pi 2.</p>
+    <h3>The problem</h3>
+    <p>I wanted an assistant that can take real actions, like email, calendar, and files, without handing my data to another app. The hardware was a Raspberry Pi 2: 1 GB of RAM and a 32-bit ARM CPU.</p>
+    <h3>What I built</h3>
+    <p>A hand-written agent engine. An intent agent classifies the request, a planner breaks it into tool calls, a memory agent recalls context, and a research agent handles lookups. 63 tools are exposed to the model through auto-generated JSON schemas. You can reach it from a Next.js web app over WebSockets, a Telegram bot, or a macOS companion daemon.</p>
+    <h3>Decisions that mattered</h3>
+    <ul>
+      <li><strong>No LangChain.</strong> On 1 GB of RAM every dependency counts, and I wanted control flow I could read and test.</li>
+      <li><strong>My own vector store.</strong> ChromaDB depends on onnxruntime, which has no 32-bit ARM build. I replaced it with SQLite plus Gemini embeddings and cosine search.</li>
+      <li><strong>Models matched to tasks.</strong> Cheap models handle intent and chat. Larger ones handle planning and research.</li>
+      <li><strong>A confirmation gate.</strong> Sending email, deleting, or running shell commands always asks first, on every interface.</li>
+    </ul>
+    <h3>Results</h3>
+    <div class="stats">
+      <div><strong>63</strong><span>callable tools</span></div>
+      <div><strong>3</strong><span>interfaces: web, Telegram, macOS</span></div>
+      <div><strong>1 GB</strong><span>of RAM, running in Docker</span></div>
+    </div>
+    <p class="muted-note">The repository is private. I'm happy to walk through the code on a call.</p>
+  </template>
+
+  <template id="tpl-drone">
+    <h2 id="study-title">Autonomous ROS2 drone</h2>
+    <p class="study__lede">Built with the Vertical Flight Society at UC San Diego, January to June 2026.</p>
+    <h3>The problem</h3>
+    <p>Find colored sandbags on a field, pick them up, and deliver them to a drop zone, with no pilot.</p>
+    <h3>What I built</h3>
+    <ul>
+      <li>A real-time detection pipeline in ROS2, using OpenCV and YOLOv8, that identifies and classifies cargo with 90%+ accuracy.</li>
+      <li>A state machine that keeps the vision output in sync with PX4 flight control, so the drone acts on what it currently sees.</li>
+    </ul>
+    <h3>Results</h3>
+    <div class="stats">
+      <div><strong>90%+</strong><span>detection accuracy</span></div>
+      <div><strong>5</strong><span>sandbags delivered per run</span></div>
+    </div>
+  </template>
+
+  <template id="tpl-dlf">
+    <h2 id="study-title">Deep learning framework from scratch</h2>
+    <p class="study__lede">I wanted to know what PyTorch does when I call <code>.backward()</code>, so I built it. Inspired by Andrej Karpathy's micrograd.</p>
+    <h3>What I built</h3>
+    <ul>
+      <li><strong>Scalar engine.</strong> Every number is a node. Backprop walks the graph in reverse topological order and applies the chain rule.</li>
+      <li><strong>Tensor engine.</strong> The same idea on NumPy arrays, with matrix-calculus gradients for matmul, reductions, and broadcasting. When an input was broadcast, its gradient is summed back down to its original shape.</li>
+    </ul>
+    <h3>Results</h3>
+    <div class="stats">
+      <div><strong>1,381×</strong><span>faster per epoch with the tensor engine</span></div>
+      <div><strong>2.36 s</strong><span>for 100 tensor epochs</span></div>
+      <div><strong>10 min 52 s</strong><span>for 20 scalar epochs</span></div>
+    </div>
+    <p class="study__links"><a class="btn btn--small" href="https://github.com/SpreadsheetAaryan/dl_framework_from_scratch" target="_blank" rel="noopener">View code on GitHub</a></p>
+  </template>
+
+  <script src="assets/main.js" defer></script>
+</body>
 </html>
