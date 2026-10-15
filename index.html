@@ -144,7 +144,7 @@
             <h3 class="feature__title">Multi-agent AI assistant</h3>
             <p class="feature__line">A personal assistant with its own agent engine, reachable from the web, Telegram, and a macOS companion. It runs in Docker on a Pi with 1 GB of RAM.</p>
             <ul class="feature__points">
-              <li>Agent engine written from scratch, no LangChain, with 63 tools</li>
+              <li>Agent engine written from scratch, no LangChain, with 69 tools</li>
               <li>Custom SQLite vector store, because ChromaDB has no 32-bit ARM build</li>
             </ul>
             <ul class="tags" aria-label="Built with"><li>Python</li><li>FastAPI</li><li>Next.js</li><li>Docker</li><li>Gemini</li></ul>
@@ -381,7 +381,7 @@
     <h3>The problem</h3>
     <p>I wanted an assistant that can take real actions, like email, calendar, and files, without handing my data to another app. The hardware was a Raspberry Pi 2: 1 GB of RAM and a 32-bit ARM CPU.</p>
     <h3>What I built</h3>
-    <p>A hand-written agent engine. An intent agent classifies the request, a planner breaks it into tool calls, a memory agent recalls context, and a research agent handles lookups. 63 tools are exposed to the model through auto-generated JSON schemas. You can reach it from a Next.js web app over WebSockets, a Telegram bot, or a macOS companion daemon.</p>
+    <p>A hand-written agent engine. An intent agent classifies the request, a planner breaks it into tool calls, a memory agent recalls context, and a research agent handles lookups. 69 tools are exposed to the model through auto-generated JSON schemas. You can reach it from a Next.js web app over WebSockets, a Telegram bot, or a macOS companion daemon.</p>
     <h3>Decisions that mattered</h3>
     <ul>
       <li><strong>No LangChain.</strong> On 1 GB of RAM every dependency counts, and I wanted control flow I could read and test.</li>
@@ -391,7 +391,7 @@
     </ul>
     <h3>Results</h3>
     <div class="stats">
-      <div><strong>63</strong><span>callable tools</span></div>
+      <div><strong>69</strong><span>callable tools</span></div>
       <div><strong>3</strong><span>interfaces: web, Telegram, macOS</span></div>
       <div><strong>1 GB</strong><span>of RAM, running in Docker</span></div>
     </div>
