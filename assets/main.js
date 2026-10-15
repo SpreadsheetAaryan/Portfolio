@@ -10,12 +10,22 @@
     themeBtn.setAttribute('aria-label', `Switch to ${now === 'dark' ? 'light' : 'dark'} theme`);
     document.querySelector('meta[name="theme-color"]').setAttribute('content', now === 'dark' ? '#0f1318' : '#f4f6f8');
   };
-  themeBtn.addEventListener('click', () => {
-    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+  const applyTheme = (next) => {
     if (next === 'light') root.dataset.theme = 'light';
     else delete root.dataset.theme;
     try { localStorage.setItem('theme', next); } catch (e) {}
     syncTheme();
+  };
+  themeBtn.addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    if (!document.startViewTransition || reduceMotion) return applyTheme(next);
+    // The new theme spreads out from the button as a circle.
+    const r = themeBtn.getBoundingClientRect();
+    const x = r.left + r.width / 2, y = r.top + r.height / 2;
+    root.style.setProperty('--tx', `${x}px`);
+    root.style.setProperty('--ty', `${y}px`);
+    root.style.setProperty('--tr', `${Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))}px`);
+    document.startViewTransition(() => applyTheme(next));
   });
   syncTheme();
 
@@ -173,7 +183,7 @@
       el.tabIndex = -1;
       el.setAttribute('role', 'gridcell');
       if (isWall(r, c)) { el.disabled = true; el.setAttribute('aria-label', 'Wall'); }
-      else el.innerHTML = arrowSVG;
+      else el.innerHTML = arrowSVG + '<span class="pin" aria-hidden="true"></span>';
       board.appendChild(el);
       cells.push(el);
     }
@@ -233,6 +243,7 @@
         el.classList.toggle('cell--goal', isGoal);
         // Lift low values so the far edge of the gradient stays visible.
         el.style.setProperty('--v', isGoal ? 1 : (v * 0.92).toFixed(3));
+        el.style.setProperty('--z', isGoal ? 1.15 : v.toFixed(3));
         el.classList.toggle('is-hi', v > 0.6);
         const arrow = el.querySelector('.arrow');
         if (arrow) {
@@ -277,10 +288,17 @@
     return path;
   };
 
+  // Column height in px for a value of 1; the CSS reads the same number as --lift.
+  const lift = () => board.clientWidth * 0.13;
+  const syncLift = () => board.style.setProperty('--lift', lift().toFixed(1) + 'px');
+  syncLift();
+  window.addEventListener('resize', syncLift);
+
   const placeAgent = ([r, c]) => {
     const el = cells[idx(r, c)];
+    const z = (r === goal[0] && c === goal[1] ? 1.15 : V[idx(r, c)]) * lift() + 2;
     agent.style.setProperty('--cs', el.offsetWidth + 'px');
-    agent.style.transform = `translate(${el.offsetLeft}px, ${el.offsetTop}px)`;
+    agent.style.transform = `translate3d(${el.offsetLeft}px, ${el.offsetTop}px, ${z.toFixed(1)}px)`;
   };
 
   const walk = () => {

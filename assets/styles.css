@@ -4,7 +4,7 @@
   --paper: #0f1318;
   --surface: #161b22;
   --ink: #e8ecf1;
-  --muted: #9aa3b0;
+  --muted: #a6afbc;
   --line: #2e3642;
   --accent: #8597ff;
   --accent-ink: #0f1318;
@@ -28,7 +28,7 @@
   --paper: #f4f6f8;
   --surface: #ffffff;
   --ink: #15181d;
-  --muted: #5a6270;
+  --muted: #4a5161;
   --line: #cdd4dd;
   --accent: #2b46e0;
   --accent-ink: #ffffff;
@@ -54,7 +54,6 @@ body {
   font-size: var(--step-0);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 h1, h2, h3, h4 { line-height: 1.15; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
 p { margin: 0; }

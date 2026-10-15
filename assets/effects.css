@@ -1,0 +1,289 @@
+/* ==========================================================================
+   Effects layer: ambient light, liquid glass, 3D value landscape, card tilt,
+   scroll-linked reveals. Loaded after styles.css; everything degrades to the
+   flat design when a feature is missing or the visitor prefers less motion.
+   ========================================================================== */
+
+:root {
+  --glass-tint: color-mix(in srgb, var(--surface) 52%, transparent);
+  --glass-tint-strong: color-mix(in srgb, var(--surface) 78%, transparent);
+  --glass-edge: rgb(255 255 255 / 0.13);
+  --glass-shine: rgb(255 255 255 / 0.22);
+  --glass-shadow: 0 1.25rem 3.5rem -1.5rem rgb(0 0 0 / 0.65);
+  --aurora-1: #3b4cff;
+  --aurora-2: #8a3ffc;
+  --aurora-3: #0fb5ae;
+  --aurora-alpha: 0.3;
+}
+:root[data-theme="light"] {
+  --glass-tint: color-mix(in srgb, var(--surface) 58%, transparent);
+  --glass-tint-strong: color-mix(in srgb, var(--surface) 82%, transparent);
+  --glass-edge: rgb(255 255 255 / 0.7);
+  --glass-shine: rgb(255 255 255 / 0.9);
+  --glass-shadow: 0 1.25rem 3rem -1.5rem rgb(30 40 80 / 0.28);
+  --aurora-alpha: 0.12;
+}
+
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ---------- Ambient light ---------- */
+body { background: var(--paper); isolation: isolate; }
+.ambient {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+}
+.ambient span {
+  position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%;
+  filter: blur(9vmax); opacity: var(--aurora-alpha);
+  will-change: transform;
+}
+.ambient span:nth-child(1) { background: var(--aurora-1); top: -25vmax; left: -15vmax; animation: drift-a 38s ease-in-out infinite alternate; }
+.ambient span:nth-child(2) { background: var(--aurora-2); top: 10vmax; right: -25vmax; animation: drift-b 46s ease-in-out infinite alternate; }
+.ambient span:nth-child(3) { background: var(--aurora-3); bottom: -35vmax; left: 20vmax; opacity: calc(var(--aurora-alpha) * 0.45); animation: drift-c 54s ease-in-out infinite alternate; }
+.is-idle .ambient span, .is-idle .cell--goal .pin { animation-play-state: paused; }
+@keyframes drift-a { to { transform: translate(18vmax, 12vmax) scale(1.15); } }
+@keyframes drift-b { to { transform: translate(-16vmax, 18vmax) scale(0.9); } }
+@keyframes drift-c { to { transform: translate(10vmax, -20vmax) scale(1.2); } }
+
+/* Film grain so the gradients don't band */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none;
+  opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Liquid glass (shared) ---------- */
+.glass, .nav__inner, .feature, .paper, .study, .stats div {
+  position: relative;
+  background: var(--glass-tint);
+  -webkit-backdrop-filter: blur(1.25rem) saturate(1.7);
+  backdrop-filter: blur(1.25rem) saturate(1.7);
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    inset 0 1px 0 var(--glass-shine),
+    inset 0 -1px 0 rgb(255 255 255 / 0.04),
+    var(--glass-shadow);
+}
+/* Rim light: a bright edge that follows the pointer (--mx/--my set in effects.js) */
+.feature::before, .paper::before, .nav__inner::before {
+  content: ""; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; z-index: 2;
+  padding: 1px;
+  background: radial-gradient(28rem circle at var(--mx, 30%) var(--my, 0%), var(--glass-shine), transparent 45%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.85;
+}
+
+/* ---------- Floating glass nav ---------- */
+.nav {
+  background: none !important;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  border-bottom: 0 !important;
+  padding: 0.75rem var(--gutter) 0;
+  pointer-events: none;
+}
+.nav__inner {
+  pointer-events: auto;
+  max-width: 100%;
+  height: 3.5rem;
+  padding: 0 0.5rem 0 1.25rem;
+  border-radius: 999px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.nav.is-scrolled .nav__inner { background: var(--glass-tint-strong); }
+/* Chromium can refract the backdrop through an SVG filter: real "liquid" glass. */
+.lg-refract .nav__inner {
+  -webkit-backdrop-filter: url(#liquid) blur(0.6rem) saturate(1.8) brightness(1.05);
+  backdrop-filter: url(#liquid) blur(0.6rem) saturate(1.8) brightness(1.05);
+}
+@media (max-width: 720px) {
+  .nav__inner { padding: 0 0.25rem 0 1rem; }
+  .nav__links {
+    top: calc(100% + 0.5rem); left: 0; right: 0;
+    border-radius: 1.25rem; border: 1px solid var(--glass-edge);
+    background: color-mix(in srgb, var(--surface) 97%, transparent);
+    box-shadow: var(--glass-shadow);
+    padding: 0.5rem 1.25rem;
+  }
+}
+html { scroll-padding-top: 5.5rem; overflow-x: clip; }
+
+/* ---------- Buttons: glassy, magnetic ---------- */
+.btn {
+  position: relative; overflow: hidden;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), 0 0.5rem 1.5rem -0.5rem color-mix(in srgb, var(--accent) 70%, transparent);
+  transition: transform 0.25s var(--ease), translate 0.35s var(--ease), background-color 0.2s, color 0.2s, box-shadow 0.3s;
+}
+.btn::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(8rem circle at var(--bx, 50%) var(--by, 0%), rgb(255 255 255 / 0.35), transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn:hover::after { opacity: 1; }
+.btn--ghost {
+  background: var(--glass-tint);
+  -webkit-backdrop-filter: blur(0.75rem) saturate(1.5); backdrop-filter: blur(0.75rem) saturate(1.5);
+  box-shadow: inset 0 1px 0 var(--glass-shine);
+}
+
+/* ---------- Hero name: variable-weight entrance ---------- */
+.hero__title { animation: rise 0.9s var(--ease) both, weight-in 1.6s var(--ease) both; animation-delay: 80ms, 80ms; }
+@keyframes weight-in { from { font-weight: 400; letter-spacing: 0.01em; } to { font-weight: 800; letter-spacing: -0.035em; } }
+
+/* ---------- 3D value landscape ---------- */
+.grid-demo__stage {
+  perspective: 1600px;
+  perspective-origin: 50% 30%;
+  padding: 4% 0 0;
+}
+.grid-demo__board {
+  --rx: 54deg; --rz: 38deg;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx)) rotateZ(var(--rz));
+  transition: transform 0.6s var(--ease);
+  width: 80%; margin: -6% auto 2%;
+  gap: 0.25rem;
+  background: var(--glass-tint);
+  border: 1px solid var(--glass-edge);
+  border-radius: 1rem;
+  box-shadow: inset 0 1px 0 var(--glass-shine), 0 2.5rem 4rem -1.5rem rgb(0 0 0 / 0.55);
+}
+.cell {
+  --z: 0; --side: color-mix(in oklab, var(--accent) calc(var(--v, 0) * 100%), var(--paper));
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--z) * var(--lift, 2rem)));
+  transition: transform 0.55s var(--ease), background-color 0.35s ease-out;
+  background: color-mix(in oklab, var(--accent) calc(max(var(--v, 0), 0.1) * 100%), var(--paper));
+  border-radius: 3px;
+}
+@media (hover: hover) {
+  .cell:not(.cell--wall):hover {
+    transform: translateZ(calc(var(--z) * var(--lift, 2rem) + 6px));
+    background-color: color-mix(in oklab, var(--accent) calc(var(--v, 0) * 100% + 25%), var(--paper));
+  }
+}
+.cell--wall { --z: 0.55; --side: var(--wall); }
+/* Side faces: south and east are the ones facing the viewer at this angle */
+.cell::before, .cell::after {
+  content: ""; position: absolute; pointer-events: none;
+  background: var(--side);
+  transition: width 0.55s var(--ease), height 0.55s var(--ease);
+}
+.cell::before { /* south */
+  left: 0; top: 100%; width: 100%; height: calc(var(--z) * var(--lift, 2rem));
+  transform-origin: top; transform: rotateX(-90deg);
+  filter: brightness(0.62);
+}
+.cell::after { /* east */
+  top: 0; left: 100%; height: 100%; width: calc(var(--z) * var(--lift, 2rem));
+  transform-origin: left; transform: rotateY(90deg);
+  filter: brightness(0.45);
+}
+.cell--goal::after { /* keep the goal's east face; the pulse moved to .pin */
+  content: ""; inset: auto; border-radius: 0; animation: none;
+  top: 0; left: 100%; height: 100%; width: calc(var(--z) * var(--lift, 2rem));
+  background: var(--accent); filter: brightness(0.5);
+}
+.cell .pin { display: none; }
+.cell--goal .pin {
+  display: block; position: absolute; inset: 26%; border-radius: 50%;
+  background: var(--accent-ink);
+  box-shadow: 0 0 0 0.35rem color-mix(in srgb, var(--accent-ink) 30%, transparent), 0 0 1.5rem var(--accent);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.cell--goal { box-shadow: 0 0 2.5rem 0.25rem color-mix(in srgb, var(--accent) 55%, transparent); }
+.agent::before {
+  background: radial-gradient(circle at 35% 30%, #fff, var(--ink) 60%);
+  box-shadow: 0 0 0 3px var(--paper), 0 0.4rem 0.8rem rgb(0 0 0 / 0.5);
+}
+.cell.on-path { box-shadow: inset 0 0 0 2px var(--ink), 0 0 1rem color-mix(in srgb, var(--accent) 50%, transparent); }
+.grid-demo__caption { position: relative; z-index: 1; }
+
+/* ---------- Project cards: glass + 3D tilt ---------- */
+.featured { perspective: 1800px; }
+.feature {
+  border-radius: 1.25rem;
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease), border-color 0.25s, box-shadow 0.4s;
+  will-change: transform;
+}
+.feature:hover { transform: translateY(-0.25rem); box-shadow: inset 0 1px 0 var(--glass-shine), 0 2rem 4rem -1.5rem rgb(0 0 0 / 0.7), 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent); }
+.feature__art {
+  background:
+    radial-gradient(120% 90% at 20% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+    color-mix(in srgb, var(--accent-soft) 55%, transparent);
+  border-right-color: var(--glass-edge);
+}
+/* Glare that follows the pointer across the card */
+.feature::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 1;
+  background: radial-gradient(36rem circle at var(--mx, 50%) var(--my, 50%), rgb(255 255 255 / 0.07), transparent 40%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.feature:hover::after { opacity: 1; }
+.feature__art svg { transition: transform 0.6s var(--ease); }
+.feature:hover .feature__art svg { transform: scale(1.04) translateY(-0.25rem); }
+
+.tags li { background: var(--glass-tint); border-color: var(--glass-edge); }
+.paper { border-radius: 1.25rem; }
+.bar span::before { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.bar--hi span::before { background: var(--accent); }
+
+/* ---------- Case study: glass sheet ---------- */
+.study { background: var(--glass-tint-strong); }
+.study__bar { background: transparent; }
+.stats div { background: var(--glass-tint); }
+
+/* ---------- Scroll-linked reveals (where supported) ---------- */
+@media screen { @supports (animation-timeline: view()) {
+  .feature, .more__row, .job, .paper, .skills > div, .contact {
+    animation: scroll-in linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 45%;
+  }
+  @keyframes scroll-in {
+    from { opacity: 0; translate: 0 2.5rem; scale: 0.97; }
+    to { opacity: 1; translate: 0 0; scale: 1; }
+  }
+} }
+
+/* ---------- Theme switch: circular reveal (View Transitions) ---------- */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { animation: theme-reveal 0.65s var(--ease) both; }
+@keyframes theme-reveal { from { clip-path: circle(0 at var(--tx, 90%) var(--ty, 2rem)); } to { clip-path: circle(var(--tr, 150vmax) at var(--tx, 90%) var(--ty, 2rem)); } }
+
+/* ---------- Touch and small screens ---------- */
+@media (pointer: coarse) {
+  .feature { transform: none !important; }
+}
+@media (max-width: 680px) {
+  .grid-demo__board { --rx: 34deg; --rz: 30deg; width: 72%; margin: 2% auto 6%; }
+  .grid-demo { max-width: 26rem; }
+}
+
+/* ---------- Reduced motion: keep the look, drop the movement ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ambient span { animation: none; }
+  .feature { transform: none !important; }
+  .feature, .more__row, .job, .paper, .skills > div, .contact { animation: none !important; }
+  .hero__title { font-weight: 800; }
+}
+
+/* ---------- Print: plain, everything visible ---------- */
+@media print {
+  .ambient, body::after, .nav, .grid-demo { display: none !important; }
+  * { animation: none !important; opacity: 1 !important; translate: none !important; scale: none !important; }
+  .feature, .paper, .stats div { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; background: none !important; }
+  .hero { min-height: 0 !important; }
+}
+@media (max-width: 360px) {
+  .nav__inner { padding: 0 0.125rem 0 0.75rem; }
+  .nav__actions .icon-btn { width: 2.5rem; height: 2.5rem; }
+}
+
+/* Keep the goal and walls their own colors over the base cell color above */
+.cell.cell--goal { background: var(--accent); }
+.cell.cell--wall { background: var(--wall); }
+@media (pointer: coarse) and (min-width: 681px) {
+  .grid-demo__board { --rx: 40deg; }
+}
